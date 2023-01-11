@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Funcionarios extends Model
 {
@@ -11,6 +12,7 @@ class Funcionarios extends Model
 
     public function cartoes()
     {
-        return $this->hasMany('App\Cartoes');
+        return $this->hasMany(Cartoes::class);
     } 
+
 }

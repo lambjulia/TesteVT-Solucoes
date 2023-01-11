@@ -18,9 +18,9 @@ class CreateCartoesTable extends Migration
             $table->string('numero');
             $table->string('saldo');
             $table->unsignedBigInteger('operadora_id')->unsigned();
-            $table->foreign('operadora_id')->references('id')->on('operadoras');
+            $table->foreign('operadora_id')->references('id')->on('operadoras')->onDelete('cascade');
             $table->unsignedBigInteger('funcionario_id')->unsigned();
-            $table->foreign('funcionario_id')->references('id')->on('funcionarios');
+            $table->foreign('funcionario_id')->references('id')->on('funcionarios')->onDelete('cascade');
             $table->timestamps();
         });
     }

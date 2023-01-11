@@ -1,4 +1,4 @@
-@extends('layout.navbar')
+@extends('layout.main')
 @section('title', 'Operadoras')
 @section('content')
 @if(session('store'))
@@ -31,7 +31,7 @@
 	})
 	</script>	
 @endif
-<div class="container col-md-9" style="padding-left: 200px; position: center">
+<div class="container col-md-9" style="width: 60em">
     <div class="row mb-6">
         <div class="col-md-12 text-center">
             <h3><strong>Operadoras</strong></h3>

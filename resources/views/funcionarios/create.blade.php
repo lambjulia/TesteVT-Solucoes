@@ -1,12 +1,15 @@
-@extends('layout.navbar')
+@extends('layout.main')
 @section('title', 'Cadastrar')
 @section('content')
 <body>
     <form class="form-horizontal" method="post" action="{{ route('funcionarios.store') }}">
         @csrf
-        <div class="container-fluid" style="padding-left: 40em;padding-top: 5em">
-            <div class="card" style="width: 18rem">
-                <div class="card-body" >
+        <div class="container-fluid" style="padding-left: 28em;padding-top: 1em; height: 800px;">
+            <div class="card" style="width: 40rem">
+                <div class="card-header">
+                    <h4 class="col-12 modal-title text-center">Cadastre o Funcionário</h5>
+                </div>
+                <div class="card-body">
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <label for="nome" class="control-label">Nome</label>
@@ -43,7 +46,10 @@
                             </div>
                         </div>
                     </div>
-                        <button type="submit" class="btn btn-outline-secondary btn-sm">Salvar</button>
+                </div>
+                <div class="card-footer text-muted">
+                    <button type="submit" class="btn btn-outline-secondary btn-sm">Salvar</button>
+                    <a href="{{ route('funcionarios') }}" class="btn btn-outline-secondary btn-sm"> Voltar</a>
                 </div>
             </div>
         </div>

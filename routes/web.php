@@ -18,9 +18,7 @@ Route::post('/update-operadoras/{id}','OperadoraController@update')->name('opera
 Route::delete('/delete-operadoras/{id}',  'OperadoraController@delete')->name('operadora.delete');
 
 //Cartões
-Route::get('/cartoes','CartaoController@cartoes')->name('cartoes');
-
-Route::get('/criar-cartoes','CartaoController@create')->name('cartoes.create');
+Route::get('/criar-cartoes/{id}','CartaoController@create')->name('cartoes.create');
 
 Route::post('/store-cartoes','CartaoController@store')->name('cartoes.store');
 
@@ -37,7 +35,7 @@ Route::get('/criar-funcionarios','FuncionarioController@create')->name('funciona
 
 Route::post('/store-funcionarios','FuncionarioController@store')->name('funcionarios.store');
 
-Route::get('/editar-funcionarios/{id}','FuncionarioController@edit')->name('funcionarios.edit');
+Route::get('/ficha-funcionarios/{id}','FuncionarioController@edit')->name('funcionarios.ficha');
 
 Route::post('/update-funcionarios/{id}','FuncionarioController@update')->name('funcionarios.update');
 

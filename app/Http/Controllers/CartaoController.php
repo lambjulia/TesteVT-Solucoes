@@ -1,57 +1,61 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cartoes;
 use App\Operadoras;
+use App\Funcionarios;
 
 class CartaoController extends Controller
 {
-    public function create() {
 
+    public function create(Request $request, $id) {
+
+        $id = request()->route()->parameter('id');
         $operadoras = Operadoras::all();
+        $funcionarios = Funcionarios::find($id);
 
-        return view('cartoes.create', compact('operadoras'));
+        return view('cartoes.create', compact('id', 'operadoras', 'funcionarios'));
     }
 
     public function store(Request $request) {
 
-        $operadora = new Operadoras();
-        $operadora->cnpj = $request->input('cnpj');
-        $operadora->nome = $request->input('nome');
-        $operadora->save();
+        $cartoes = new Cartoes();
+        $cartoes->funcionario_id = $request->input('funcionario_id');
+        $operadoras = Operadoras::find($request->input('operadora_id'));
+        $cartoes->numero = $request->input('numero');
+        $cartoes->saldo = $request->input('saldo');
+        $cartoes->operadora()->associate($operadoras);
+        $cartoes->save();
 
-        return redirect()->route('cartoes')->with('store', '402');
-    }
-
-    public function cartoes() {
-        $cartoes = Cartoes::all();
-
-        return view('cartoes.cartoes', compact('cartoes'));
+        return redirect()->route('funcionarios.ficha', ['id'=>$cartoes->funcionario_id])->with('store', '402');
     }
 
     public function edit($id) {
-        $operadoras = Operadoras::find($id);
 
-        return view('cartoes.edit', compact('operadoras'));
+        $id = request()->route()->parameter('id');
+        $operadoras = Operadoras::all();
+        $cartoes = Cartoes::find($id);
+
+        return view('cartoes.edit', compact('operadoras', 'cartoes', 'id'));
     }
     
     public function update(Request $request, $id) {
 
-        $operadoras = Operadoras::find($id);
-        $operadoras->cnpj = $request->input('cnpj');
-        $operadoras->nome = $request->input('nome');
-        $operadoras->update();
+        $cartoes = Cartoes::find($id);
+        $cartoes->numero = $request->input('numero');
+        $cartoes->saldo = $request->input('saldo');
+        $cartoes->operadora_id = $request->input('operadora_id');
+        $cartoes->update();
 
-        return redirect()->route('cartoes')->with('update', '402');
+        return redirect()->route('funcionarios.ficha', ['id'=>$cartoes->funcionario_id])->with('update', '402');
     }
  
     public function delete($id)
     {
-        $operadoras = Operadoras::find($id);
-        $operadoras->delete();
-        return redirect()->route('cartoes')->with('delete', '402');
+        $cartoes = Cartoes::find($id);
+        $cartoes->delete();
+        return redirect()->route('funcionarios.ficha', ['id'=>$cartoes->funcionario_id])->with('delete', '402');
     }
 
 }
