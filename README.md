@@ -14,7 +14,7 @@
 <p>Crie um banco com o nome 'testevt'</p>
 <p>No terminal do projeto rode os seguintes comandos:</p>
 <p>composer install</p>
-<p>php artisan migrate</p>
+<p>php artisan migrate --seed</p>
 <p>php artisan serve</p>
 <p>E abra o servidor no navegador com http://127.0.0.1:8000/</p>
 
