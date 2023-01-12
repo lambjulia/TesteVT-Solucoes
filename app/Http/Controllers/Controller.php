@@ -9,7 +9,6 @@ use Illuminate\Routing\Controller as BaseController;
 use App\Operadoras;
 use App\Cartoes;
 use App\Funcionarios;
-
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
@@ -19,9 +18,6 @@ class Controller extends BaseController
         $operadoras = Operadoras::all();
         $funcionarios = Funcionarios::all();
         $cartoes = Cartoes::all();
-        // $funcionarios = Funcionarios::where('nome', 'LIKE', '%' .$search. '%')
-        // ->orWhere('cpf', 'LIKE', '%' .$search. '%')
-        // ->orWhere('numero', 'LIKE', '%' .$search. '%')->with('cartoes')->get();
 
         return view('home', compact('operadoras', 'funcionarios', 'cartoes'));
     }

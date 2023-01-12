@@ -5,10 +5,8 @@ use Illuminate\Http\Request;
 use App\Cartoes;
 use App\Operadoras;
 use App\Funcionarios;
-
 class CartaoController extends Controller
 {
-
     public function create(Request $request, $id) {
 
         $id = request()->route()->parameter('id');

@@ -11,8 +11,6 @@ class FuncionarioController extends Controller
 {
     public function create() {
 
-        $funcionarios = Funcionarios::all();
-
         return view('funcionarios.create');
     }
 
@@ -38,6 +36,7 @@ class FuncionarioController extends Controller
     }
 
     public function edit($id) {
+        
         $funcionarios = Funcionarios::find($id);
         $cartoes = Cartoes::where('funcionario_id', $id)->get();
         $valores = DB::table('cartoes')->select('saldo')->where('funcionario_id', $id)->get();
@@ -59,20 +58,11 @@ class FuncionarioController extends Controller
         return redirect()->route('funcionarios')->with('update', '402');
     }
  
-    public function delete($id)
-    {
+    public function delete($id) {
+
         $funcionarios = Funcionarios::find($id);
         $funcionarios->delete();
         return redirect()->route('funcionarios')->with('delete', '402');
     }
 
-    public function search() {
-        $search = $_GET['query'];
-        $funcionarios = Funcionarios::where('nome', 'LIKE', '%' .$search. '%')
-       ->orWhere('cpf', 'LIKE', '%' .$search. '%')
-       ->orWhere('numero', 'LIKE', '%' .$search. '%')->with('cartoes')->get();
-
-       
-
-    }
 }

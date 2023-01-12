@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Operadoras;
-
 class OperadoraController extends Controller
 {
     public function create() {
+        
         return view('operadoras.create');
     }
 
@@ -22,12 +22,14 @@ class OperadoraController extends Controller
     }
 
     public function operadoras() {
+
         $operadoras = Operadoras::all();
 
         return view('operadoras.operadoras', compact('operadoras'));
     }
 
     public function edit($id) {
+
         $operadoras = Operadoras::find($id);
 
         return view('operadoras.edit', compact('operadoras'));
@@ -43,8 +45,8 @@ class OperadoraController extends Controller
         return redirect()->route('operadoras')->with('update', '402');
     }
  
-    public function delete($id)
-    {
+    public function delete($id) {
+
         $operadoras = Operadoras::find($id);
         $operadoras->delete();
         return redirect()->route('operadoras')->with('delete', '402');

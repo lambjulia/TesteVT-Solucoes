@@ -15,4 +15,7 @@ class Funcionarios extends Model
         return $this->hasMany(Cartoes::class);
     } 
 
+    public function valor(){
+        return Cartoes::where('funcionario_id','=',$this->id)->sum('saldo');
+    }
 }

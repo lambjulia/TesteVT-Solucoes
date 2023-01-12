@@ -4,6 +4,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','Controller@home')->name('home');
 
+//Pesquisas
+Route::get('/pesquisas','ApiController@pesquisas')->name('pesquisas');
+
+Route::get('/google','ApiController@google')->name('google');
+
+Route::get('/blog','ApiController@blog')->name('blog');
+
+Route::get('/pesquisaVT','ApiController@pesquisaVT')->name('pesquisaVT');
+
 //Operadoras
 Route::get('/operadoras','OperadoraController@operadoras')->name('operadoras');
 
